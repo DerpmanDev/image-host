@@ -2,6 +2,9 @@
 This thing is supposed to upload images and put it on the web (as you can see)\
 You can write details for the updates you did here.\
 \
+`4/25` what is up chat DERP here i converted everything to ts and next.js soon NOOOOOOOOOOOOOOOOOOOOOOOO
+\
+\
 `4/23` Spark says account systems soon?? And security of course
 \
 \

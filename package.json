@@ -1,13 +1,21 @@
 {
-  "name": "image-upload-server",
+  "name": "image-host-ts-test",
   "version": "1.0.0",
-  "description": "image bot",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
-    "multer": "^1.4.2"
+    "@types/express": "^4.17.21",
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1",
+    "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@types/multer": "^1.4.11"
   }
 }
