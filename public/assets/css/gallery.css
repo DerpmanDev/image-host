@@ -1,0 +1,36 @@
+body {
+    overflow-x: hidden;
+}
+
+.gallery-item {
+    width: calc(33.33% - 18px);
+    margin: 9px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#imageContainer {
+    margin: 0 auto;
+    justify-content: center;
+
+}
+
+img {
+    width: 350px;
+    height: 250px;
+    max-width: 350px;
+    max-height: 250px;
+    border-radius: 5px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: .2s;
+}
+
+img:hover {
+    opacity: 50%;
+}

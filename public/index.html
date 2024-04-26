@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/prisma.webp">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.20/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/assets/js/index.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/index.css">
+    <title>𝐢𝐦𝐠 𝐡𝐨𝐬𝐭𝐞𝐫 | 𝐩𝐫𝐢𝐬𝐦</title>
+</head>
+<body>
+    <div class="navbar-center centered">
+        <a class="btn btn-ghost text-xl title" style="font-size:40px;margin-top:20px;text-decoration:none;" href="/">img hoster</a>
+        <div id="uploadForm" style="padding: 30px;">
+            <label for="fileInput" class="btn">select file</label>
+            <input type="file" id="fileInput" style="display: none;" onchange="displayFileName(this)" accept=".jpg,.png,.gif">
+            <button type="button" class="btn" onclick="uploadFile()">begin upload</button>
+            <a class="btn" href="/gallery">gallery</a>
+            <div class="dropdown mb-72">
+                <div tabindex="0" role="button" class="btn m-1">
+                  theme
+                  <svg width="12px" height="12px" class="h-2 w-2 fill-current opacity-60 inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048"><path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path></svg>
+                </div>
+                <ul tabindex="0" class="dropdown-content z-[1] p-2 shadow-2xl bg-base-300 rounded-box w-52">
+                  <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="dark" value="default"/></li>
+                  <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="anti emo" value="retro"/></li>
+                  <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="coffee" value="coffee"/></li>
+                  <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="piss" value="cyberpunk"/></li>
+                  <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="uwu love" value="valentine"/></li>
+                  <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-start" aria-label="ugly ass blue" value="aqua"/></li>
+                </ul>
+              </div>
+            <br>
+        </div>
+    </div>
+    <br>
+    <div id="fileName"></div>
+    <a id="outputMessage" target="new" style="display:none;">open image</a>
+
+    <p class="btn text-xl footer" style="font-size:12px;padding:8px;">© prism studios 2024</p>
+    <script src="/assets/js/themes.js"></script>
+    <script>
+        function displayFileName(input) {
+            const fileNameSpan = document.getElementById('fileName');
+            fileNameSpan.innerText = input.files[0].name;
+        }
+
+        function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            const outputMsg = document.getElementById('outputMessage');
+
+            const file = fileInput.files[0];
+            
+            const formData = new FormData();
+            formData.append('file', file);
+            outputMsg.style.display = 'block';
+            outputMsg.innerHTML = 'uploading file...';
+
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+                
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+
+                } else {
+                    console.error('Failed to upload file');
+                    outputMsg.innerText = 'upload failed!';
+                }
+            })
+            .then(imagePath => {
+                outputMsg.href = imagePath;
+                outputMsg.innerHTML = 'done, click here to view image';
+                outputMsg.style.display = "block";
+            })
+            .catch(error => {
+                console.error('Error uploading file:', error);
+            });
+        }
+</script>
+<script src="/assets/js/themes.js"></script>
+</body>
+</html>
