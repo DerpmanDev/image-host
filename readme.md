@@ -1,3 +1,11 @@
+# 🛑 This is currently not being maintained
+This was recovered from my old server. This is a old and (really bad) version of the image hoster, the original one was deleted.\
+\
+Repo made public 8/20/2024
+
+
+
+
 ## Image Uploader
 This thing is supposed to upload images and put it on the web (as you can see)\
 You can write details for the updates you did here.\
